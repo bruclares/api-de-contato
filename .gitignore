@@ -1,0 +1,99 @@
+##############################
+# PYTHON BASICS
+##############################
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribuição / build
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+##############################
+# VIRTUAL ENVIRONMENTS
+##############################
+venv/
+.env/
+.venv/
+env/
+ENV/
+
+##############################
+# FASTAPI / ASGI
+##############################
+# Arquivos gerados por servidores ASGI ou hot reload
+*.pid
+
+##############################
+# CONFIG / SECRETS
+##############################
+.env
+.env.*
+*.secret
+secrets.json
+
+##############################
+# CACHE / LOGS
+##############################
+*.log
+logs/
+*.sqlite3
+*.db
+*.db-journal
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Pytest
+.pytest_cache/
+
+##############################
+# IDEs
+##############################
+# VSCode
+.vscode/
+# PyCharm
+.idea/
+*.iml
+
+##############################
+# DOCKER
+##############################
+docker-data/
+docker/volumes/
+*.tar
+
+##############################
+# FRONTEND (caso use)
+##############################
+node_modules/
+*.tsbuildinfo
+
+##############################
+# MISC
+##############################
+.DS_Store
+Thumbs.db
