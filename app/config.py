@@ -2,6 +2,8 @@ import os
 from typing import List
 from pydantic_settings import BaseSettings
 from fastapi_mail import ConnectionConfig
+from slowapi import Limiter
+from slowapi.util import get_remote_address
 
 
 class Settings(BaseSettings):
@@ -16,7 +18,7 @@ class Settings(BaseSettings):
     # configuração do fastapi-mail centralizada
     @property
     def cors_origins(self) -> List[str]:
-        return [origin.strip() for origin in self.ALLOWED_ORIGINS.split()]
+        return [origin.strip() for origin in self.ALLOWED_ORIGINS.split(",")]
 
     @property
     def email_conf(self):
@@ -38,3 +40,5 @@ class Settings(BaseSettings):
 
 # instância única para usar no app todo
 settings = Settings()
+
+limiter = Limiter(key_func=get_remote_address)

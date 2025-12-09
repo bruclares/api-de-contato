@@ -1,6 +1,7 @@
-from fastapi import APIRouter, BackgroundTasks
+from fastapi import APIRouter, BackgroundTasks, Request
 from app.schemas import ContatoSchema
 from app.services import EmailService
+from app.config import limiter
 
 # cria um agrupador de rotas
 router = APIRouter()
@@ -10,7 +11,10 @@ service = EmailService()
 
 
 @router.post("/send")
-async def send_email(contato: ContatoSchema, background_tasks: BackgroundTasks):
+@limiter.limit("5/minute")
+async def send_email(
+    request: Request, contato: ContatoSchema, background_tasks: BackgroundTasks
+):
     # recebe e valida
     # chama o serviço
     await service.enviar_contato(contato, background_tasks)
