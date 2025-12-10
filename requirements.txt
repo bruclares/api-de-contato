@@ -4,3 +4,4 @@ python-dotenv
 fastapi-mail
 pydantic-settings
 slowapi
+loguru
