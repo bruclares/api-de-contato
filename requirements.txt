@@ -5,3 +5,4 @@ pydantic-settings
 slowapi
 loguru
 resend
+email-validator
