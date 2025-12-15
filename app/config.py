@@ -1,7 +1,6 @@
 import os
 from typing import List
 from pydantic_settings import BaseSettings
-from fastapi_mail import ConnectionConfig
 from slowapi import Limiter
 from slowapi.util import get_remote_address
 
