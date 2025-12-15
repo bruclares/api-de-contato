@@ -28,8 +28,8 @@ class Settings(BaseSettings):
             MAIL_FROM=self.MAIL_FROM,
             MAIL_PORT=self.MAIL_PORT,
             MAIL_SERVER=self.MAIL_SERVER,
-            MAIL_STARTTLS=True,
-            MAIL_SSL_TLS=False,
+            MAIL_STARTTLS=False,
+            MAIL_SSL_TLS=True,
             USE_CREDENTIALS=True,
             VALIDATE_CERTS=True,
         )
