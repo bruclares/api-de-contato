@@ -36,12 +36,11 @@ class EmailService:
         except Exception as e:
             log.error(f"FALHA ao enviar pelo Resend: {str(e)}")
 
-
-async def enviar_contato(
-    self, contato: ContatoSchema, background_tasks: BackgroundTasks
-):
-    """
-    Apenas delega a tarefa para background.
-    """
-    # Agenda o envio para não travar a resposta do usuário
-    background_tasks.add_task(self._send_email_wrapper, contato)
+    async def enviar_contato(
+        self, contato: ContatoSchema, background_tasks: BackgroundTasks
+    ):
+        """
+        Apenas delega a tarefa para background.
+        """
+        # Agenda o envio para não travar a resposta do usuário
+        background_tasks.add_task(self._send_email_wrapper, contato)
