@@ -1,7 +1,8 @@
 # 📧 API de Contato (Microsserviço)
 
-API robusta e escalável desenvolvida em **FastAPI** para gerenciar o envio de formulários de contato.
-Projetada com foco em **Segurança, Observabilidade e Performance**, pronta para atender múltiplos clientes através de uma arquitetura limpa e desacoplada.
+API escalável desenvolvida em **FastAPI** para gerenciar o envio de formulários de contato.
+
+Projetada com foco em **Segurança, Observabilidade e Performance**, utilizando **Resend** para garantir a entrega dos e-mails sem timeouts.
 
 ---
 
@@ -10,9 +11,9 @@ Projetada com foco em **Segurança, Observabilidade e Performance**, pronta para
 - **[FastAPI](https://fastapi.tiangolo.com/)**: Framework moderno e assíncrono de alta performance.
 - **[Uvicorn](https://www.uvicorn.org/)**: Servidor ASGI para produção.
 - **[Pydantic V2](https://docs.pydantic.dev/)**: Validação de dados rigorosa e serialização.
-- **[FastAPI-Mail](https://sabuhish.github.io/fastapi-mail/)**: Envio assíncrono de e-mails (Background Tasks).
 - **[SlowAPI](https://pypi.org/project/slowapi/)**: Rate Limiting para proteção contra Spam/DoS.
 - **[Loguru](https://github.com/Delgan/loguru)**: Logging estruturado e rotação de arquivos de log.
+- **[Resend](https://resend.com/)**: API moderna para envio de e-mails transacionais (Alta entregabilidade).
 
 ---
 
@@ -30,8 +31,9 @@ Projetada com foco em **Segurança, Observabilidade e Performance**, pronta para
   - **Monitoramento de Requisições**: Middleware que registra rota, status HTTP e tempo de latência (ms).
   - **Tratamento de Erros**: Captura global de exceções e falhas de validação (422) com logs detalhados.
 
-- **⚡ Performance**:
-  - **Envio Assíncrono**: O e-mail é processado em _background_, não travando a resposta para o usuário.
+- **⚡ Performance e Confiabilidade**:
+  - **Envio via API (Resend)**: Substituição do protocolo SMTP antigo por chamadas HTTP rápidas e seguras.
+  - **Background Tasks**: O processamento ocorre em segundo plano, garantindo resposta instantânea ao usuário.
 
 ---
 
@@ -58,9 +60,10 @@ O projeto segue uma estrutura modular simples e eficiente:
 ## 🛠️ Instalação e Configuração
 
 1. Pré-requisitos
-   Python 3.10+
 
-Conta de E-mail com acesso SMTP (ex: Gmail App Password)
+- Python 3.10+
+
+- Conta no Resend.com (Grátis) para obter a API Key.
 
 2. Configuração Local
 
@@ -85,12 +88,12 @@ pip install -r requirements.txt
 Crie um arquivo .env na raiz e configure:
 
 ```text
-MAIL_USERNAME=seu@email.com
-MAIL_PASSWORD=sua_senha_de_app
-MAIL_FROM=seu@email.com
-MAIL_PORT=587
-MAIL_SERVER=smtp.gmail.com
-MAIL_TO=destinatario@email.com
+# Chave da API do Resend (Começa com re_...)
+RESEND_API_KEY=re_123456789...
+
+# Quem receberá os contatos do site (Seu e-mail)
+MAIL_TO=seu@email.com
+
 # Lista de sites permitidos (separados por vírgula, sem espaços)
 ALLOWED_ORIGINS=http://localhost:5500,[https://seu-site.vercel.app](https://seu-site.vercel.app)
 ```
